@@ -1,0 +1,33 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin:0;
+}
+.board {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.row {
+    display: flex;
+    gap: 4px;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: #EEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell p {
+    font-size: 32px;
+}
