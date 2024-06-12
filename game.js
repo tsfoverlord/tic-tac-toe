@@ -15,6 +15,14 @@ function createGame() {
         return board; //Fix this to return deep copy
     }
 
+    function reset() {
+        for(let r = 0; r < board.length; r++){
+            for(let c = 0; c < board[0].length; c++){
+                board[r][c] = '';
+            }
+        }
+    }
+
     function makeMove(r,c){
         if(r < 0 || r >= 3 || c < 0 || c >= 3){
             console.log('Invalid move');
@@ -89,6 +97,6 @@ function createGame() {
         console.log('Tie');
     }
 
-    return {getCurrentPlayer, makeMove, won, getBoard, switchPlayer, isTie};
+    return {getCurrentPlayer, makeMove, won, getBoard, switchPlayer, isTie, reset};
 }
 
