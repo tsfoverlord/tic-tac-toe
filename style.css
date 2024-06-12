@@ -31,3 +31,15 @@ body {
 .cell p {
     font-size: 32px;
 }
+
+#reset {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+p {
+    font-size: 20px;
+    margin: 8px;
+}

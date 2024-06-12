@@ -11,35 +11,38 @@ function handleClick(e){
         message.textContent = "Place already occupied!!";
         return;
     }
-    
     const playerSign = document.createElement('p');
-    playerSign.textContent = game.getCurrentPlayer();
+    playerSign.textContent = emojify(game.getCurrentPlayer());
     e.target.append(playerSign);
 
     if(game.isTie()){
-        message.textContent = "Tie!!";
+        message.textContent = "Tie!";
         cleanUp();
         return;
     }
 
     if(game.won()){
-        message.textContent = `${game.getCurrentPlayer()} wins`;
+        message.textContent = `${emojify(game.getCurrentPlayer())} wins!`;
         cleanUp();
         return;
     }
     game.switchPlayer();
-    turnMessage.textContent = `Player ${game.getCurrentPlayer()}'s turn`;
+    turnMessage.textContent = `Player ${emojify(game.getCurrentPlayer())}'s turn`;
+}
+
+function emojify(sign){
+    return sign === "X" ? "✖️" : "⭕";
 }
 
 function initGame(){
-    console.log('Game initialised');
     game.reset();
     cells.forEach(cell => {
         cell.innerHTML = "";
-    });
-    cells.forEach((cell) => {
         cell.addEventListener('click',handleClick)
     });
+    message.textContent = "";
+    turnMessage.textContent = `Player ${emojify('X')}'s turn`;
+    console.log('Game initialised');
 }
 
 function cleanUp() {
