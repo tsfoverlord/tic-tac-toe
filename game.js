@@ -7,6 +7,14 @@ function createGame() {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 
+    function getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    function getBoard() {
+        return board; //Fix this to return deep copy
+    }
+
     function makeMove(r,c){
         if(r < 0 || r >= 3 || c < 0 || c >= 3){
             console.log('Invalid move');
@@ -21,6 +29,7 @@ function createGame() {
     }
 
     function won() {
+
         for(let r = 0; r < 3; r++){
             if(board[r].every(x => x === currentPlayer)){
                 return true;
@@ -49,6 +58,17 @@ function createGame() {
         return false;
     }
 
+    function  isTie(){
+        for(let r = 0; r < board.length; r++){
+            for(let c = 0; c < board[0].length; c++){
+                if(board[r][c] === ''){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     function play() {
         let moves = 9;
         while(moves > 0){
@@ -64,14 +84,11 @@ function createGame() {
                 console.log(`${currentPlayer} wins`);
                 return;
             }
-            switchPlayer();
             moves--;
         }
         console.log('Tie');
     }
 
-    return {play};
+    return {getCurrentPlayer, makeMove, won, getBoard, switchPlayer, isTie};
 }
 
-const game = createGame();
-game.play();
