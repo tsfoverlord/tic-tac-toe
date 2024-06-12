@@ -21,6 +21,7 @@ function createGame() {
                 board[r][c] = '';
             }
         }
+        currentPlayer = playerX;
     }
 
     function makeMove(r,c){
